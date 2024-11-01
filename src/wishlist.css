@@ -1,0 +1,1409 @@
+:root {
+    --primary-bg: #ffffff;
+    --card-bg: #ffffff;
+    --primary-pink: #ff69b4;
+    --secondary-pink: #ffb6c1;
+    --text-dark: #2d3748;
+    --text-light: #718096;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --card-shadow: 0 8px 16px rgba(255, 105, 180, 0.1);
+    --gradient-bg: linear-gradient(135deg, #fff0f6, #fff5f7);
+}
+
+body {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    padding: 2rem;
+    padding-left: 250px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.wishlist-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.wishlist-container h2 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.wishlist-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+    border-radius: 2px;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--card-shadow);
+    gap: 1rem;
+    opacity: 1;
+}
+
+.wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(255, 105, 180, 0.15);
+}
+
+.wishlist-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.wishlist-item .item-info {
+    flex: 1;
+    color: var(--text-dark);
+}
+
+.wishlist-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+.wishlist-item p {
+    margin: 0.25rem 0;
+    color: var(--text-light);
+}
+
+.wishlist-item .price {
+    color: var(--primary-pink);
+    font-weight: bold;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-pink);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.remove-btn:hover {
+    background: var(--secondary-pink);
+    transform: translateY(-2px);
+}
+
+.empty-wishlist {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.empty-wishlist i {
+    font-size: 4rem;
+    color: var(--secondary-pink);
+    margin-bottom: 1.5rem;
+}
+
+.empty-wishlist p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.empty-wishlist .primary-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+} 
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    z-index: 1000;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.nav-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.nav-brand h1 {
+    color: var(--primary-pink);
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links a i {
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    background: var(--secondary-pink);
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-links a.active {
+    background: var(--primary-pink);
+    color: white;
+}
+
+/* Adjust main content to accommodate side nav */
+body {
+    padding-left: 250px;
+}
+
+.main-container, 
+.wishlist-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.edit-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.edit-modal-content h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.edit-modal-content textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: 1px solid var(--secondary-pink);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    resize: vertical;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.save-btn, .cancel-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.save-btn {
+    background: var(--primary-pink);
+    color: white;
+}
+
+.cancel-btn {
+    background: #e2e8f0;
+    color: var(--text-dark);
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    transform: translateY(-2px);
+}
+
+.wishlist-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.edit-btn {
+    background: var(--secondary-pink);
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    background: var(--primary-pink);
+    transform: translateY(-2px);
+}
+
+/* Add to existing CSS */
+
+.create-wishlist-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.create-btn {
+    background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 auto 3rem;
+    display: block;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.edit-name-section {
+    margin-bottom: 2rem;
+}
+
+.edit-name-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+.products-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.edit-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.product-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-name {
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-dark);
+}
+
+.product-brand {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0 0 0.25rem 0;
+}
+
+.product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primary-pink);
+    margin: 0;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.remove-product-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-product-btn:hover {
+    background: #ff0000;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #e53e3e;
+    background: #fff5f5;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.wishlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: var(--primary-pink);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.wishlist-items {
+    margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.wishlist-item {
+    animation: none;
+    opacity: 1;
+}
+
+.wishlist-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+}
+
+.wishlist-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.remove-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Edit Modal Styles */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    cursor: pointer;
+}
+
+.edit-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.name-section, .products-section {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.name-edit {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.save-name-btn {
+    background: var(--primary-pink);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.edit-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.edit-product-item .product-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-product-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.remove-product-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.add-btn {
+    background: var(--secondary-pink);
+    color: white;
+}
+
+.edit-btn {
+    background: var(--primary-pink);
+    color: white;
+}
+
+.delete-btn {
+    background: #ff4444;
+    color: white;
+}
+
+.wishlist-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.products-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.no-products {
+    text-align: center;
+    color: var(--text-light);
+    padding: 1rem;
+}
+
+.edit-note {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal input::placeholder,
+.modal select option:first-child {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.wishlists-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.wishlist-card {
+    background: white;
+    border-radius: 25px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.12);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.wishlist-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, 
+        var(--primary-pink), 
+        #ff1493,
+        var(--secondary-pink),
+        #ff69b4
+    );
+    background-size: 300% 100%;
+    animation: gradientBorder 3s ease infinite;
+}
+
+.wishlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.15);
+}
+
+.wishlist-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.wishlist-info h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.wishlist-info p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.wishlist-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.action-btn {
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.add-btn {
+    background: var(--secondary-pink);
+    flex: 2;
+}
+
+.edit-btn {
+    background: #8a2be2;
+    flex: 1;
+}
+
+.delete-btn {
+    background: #ff4757;
+    flex: 1;
+}
+
+.wishlist-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-pink) #f0f0f0;
+}
+
+.wishlist-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wishlist-items::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+.wishlist-items::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 3px;
+}
+
+.wishlist-item {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.wishlist-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.wishlist-item .item-info {
+    text-align: center;
+}
+
+.wishlist-item h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.wishlist-item .price {
+    font-size: 1.2rem;
+    color: var(--primary-pink);
+    font-weight: 600;
+}
+
+/* Update wishlist card styling */
+.wishlist-card {
+    background: white;
+    border-radius: 25px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.12);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+/* Enhanced gradient border */
+.wishlist-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, 
+        var(--primary-pink), 
+        #ff1493,
+        var(--secondary-pink),
+        #ff69b4
+    );
+    background-size: 300% 100%;
+    animation: gradientBorder 3s ease infinite;
+}
+
+/* Add gradient animation */
+@keyframes gradientBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enhanced wishlist header info */
+.wishlist-info {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.wishlist-info h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.1);
+}
+
+.wishlist-info p {
+    display: inline-block;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(to right, #fff0f5, #ffe4ef);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 105, 180, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+}
+
+/* Smaller, more elegant action buttons */
+.wishlist-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.action-btn {
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: none;
+}
+
+.add-btn {
+    background: linear-gradient(45deg, var(--secondary-pink), #ffb6c1);
+    color: white;
+    flex: 1.5;
+}
+
+.edit-btn {
+    background: linear-gradient(45deg, #9c27b0, #8a2be2);
+    color: white;
+    flex: 1;
+}
+
+.delete-btn {
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    color: white;
+    flex: 1;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+/* Enhanced wishlist items grid */
+.wishlist-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    margin-top: 1.5rem;
+}
+
+/* Enhanced wishlist item cards */
+.wishlist-item {
+    background: white;
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.08);
+}
+
+.wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(255, 105, 180, 0.15);
+}
+
+.wishlist-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.item-info h4 {
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.item-info .price {
+    font-size: 1.1rem;
+    color: var(--primary-pink);
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #fff0f5;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+/* Enhanced Edit Modal Styling */
+.modal {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 25px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.15);
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.edit-note {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to right, #fff0f5, #ffe4ef);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid rgba(255, 105, 180, 0.1);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: var(--text-dark);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Save Changes Button */
+.save-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: #fff0f5;
+    color: var(--primary-pink);
+    transform: rotate(90deg);
+}
+
+/* Add subtle animation for modal appearance */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content {
+    animation: modalFadeIn 0.3s ease forwards;
+}
+
+.titlebar {
+    -webkit-app-region: drag; /* Makes the titlebar draggable */
+    height: 32px;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.window-controls {
+    -webkit-app-region: no-drag; /* Makes buttons clickable */
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+}
+
+.control-button {
+    border: none;
+    background: transparent;
+    color: #666;
+    font-size: 14px;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.control-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.close:hover {
+    background: #ff4444;
+    color: white;
+}
+
+/* Price Section Styling */
+.price-section {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.calculate-btn {
+    background: linear-gradient(45deg, #20bf6b, #0bb7af);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(32, 191, 107, 0.2);
+}
+
+.calculate-btn i {
+    font-size: 1.1rem;
+}
+
+.total-price {
+    min-height: 40px;
+    transition: all 0.3s ease;
+}
+
+.total-price-display {
+    background: linear-gradient(to right, #fff0f5, #f8f9fa);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.08);
+}
+
+.price-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-pink);
+}
+
+/* Animation for price calculation */
+@keyframes priceCalculated {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.price-calculated {
+    animation: priceCalculated 0.5s ease;
+}
+
+/* Delete Modal Styles */
+.delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.delete-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.delete-icon {
+    font-size: 4rem;
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    animation: wobble 0.5s ease;
+}
+
+.delete-modal-content h3 {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.delete-modal-content p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.delete-modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.delete-confirm-btn, .delete-cancel-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.delete-confirm-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+.delete-confirm-btn:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.delete-cancel-btn {
+    background: #f8f9fa;
+    color: var(--text-dark);
+}
+
+.delete-cancel-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes wobble {
+    0% { transform: scale(0.8) rotate(0); }
+    25% { transform: scale(1.2) rotate(-5deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+    75% { transform: scale(1.2) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+/* Enhanced Sidebar Navigation */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 192, 203, 0.2);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 5px 0 20px rgba(255, 105, 180, 0.1);
+    z-index: 1000;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+
+.logo-container img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.app-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0 1rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link.active {
+    background: linear-gradient(45deg, var(--primary-pink), #ff1493);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.nav-link:not(.active):hover {
+    background: rgba(255, 105, 180, 0.1);
+    transform: translateX(5px);
+}

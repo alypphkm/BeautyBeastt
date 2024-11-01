@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beauty Beast - Welcome</title>
+    <link rel="stylesheet" href="splash.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="titlebar">
+        <div class="window-controls">
+            <button class="control-button minimize" onclick="window.electronAPI.minimizeWindow()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="control-button maximize" onclick="window.electronAPI.maximizeWindow()">
+                <i class="fas fa-square"></i>
+            </button>
+            <button class="control-button close" onclick="window.electronAPI.closeWindow()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
+    <div class="splash-container">
+        <img src="assets/images/logo2.jpg" alt="Beauty Beast Logo" class="logo">
+        <h1 class="brand-name">Beauty Beast</h1>
+        <div class="loading-bar">
+            <div class="progress"></div>
+        </div>
+        <p class="loading-text">Loading your beauty experience...</p>
+    </div>
+
+    <script src="splash.js"></script>
+</body>
+</html> 

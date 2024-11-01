@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beauty Beast - Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="titlebar">
+        <div class="window-controls">
+            <button class="control-button minimize" onclick="window.electronAPI.minimizeWindow()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="control-button maximize" onclick="window.electronAPI.maximizeWindow()">
+                <i class="fas fa-square"></i>
+            </button>
+            <button class="control-button close" onclick="window.electronAPI.closeWindow()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="animated-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <nav class="simple-nav">
+        <button onclick="window.location.href='home.html'" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Beauty Categories</h1>
+    </nav>
+
+    <main>
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+        <div id="productGrid" class="product-grid" style="display: none;"></div>
+    </main>
+
+    <script src="products.js"></script>
+</body>
+</html> 

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beauty Beast - Wishlist</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="titlebar">
+        <div class="window-controls">
+            <button class="control-button minimize" onclick="window.electronAPI.minimizeWindow()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="control-button maximize" onclick="window.electronAPI.maximizeWindow()">
+                <i class="fas fa-square"></i>
+            </button>
+            <button class="control-button close" onclick="window.electronAPI.closeWindow()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="assets/images/logo2.jpg" alt="Beauty Beast Logo">
+            <h1 class="app-name">Beauty Beast</h1>
+        </div>
+        
+        <nav class="nav-links">
+            <a href="home.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="wishlist.html" class="nav-link active">
+                <i class="fas fa-heart"></i>
+                <span>Wishlist</span>
+            </a>
+            <a href="products.html" class="nav-link">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Products Details</span>
+            </a>
+        </nav>
+    </div>
+
+    <main class="wishlist-container">
+        <div class="main-content">
+            <h2>My Wishlists</h2>
+            <button id="createWishlistBtn" class="create-btn">
+                <i class="fas fa-plus"></i> Create Your Wishlist
+            </button>
+            
+            <div id="wishlistsContainer" class="wishlists-container">
+                <!-- Wishlists will be displayed here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Wishlist Modal -->
+    <div id="createWishlistModal" class="modal">
+        <div class="modal-content">
+            <h2>Create New Wishlist</h2>
+            <div class="form-group">
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="userGender">Gender:</label>
+                <select id="userGender">
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userAge">Age:</label>
+                <input type="number" id="userAge" min="1" max="120" placeholder="Enter your age">
+            </div>
+            <div class="modal-buttons">
+                <button onclick="createWishlist()" class="create-btn">Create</button>
+                <button onclick="closeModal()" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Wishlist Modal -->
+    <div id="editWishlistModal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Wishlist</h2>
+            <p class="edit-note">Only fill in the fields you want to change</p>
+            <div class="form-group">
+                <label for="editWishlistName">Name:</label>
+                <input type="text" id="editWishlistName" placeholder="Leave blank to keep current name">
+            </div>
+            <div class="form-group">
+                <label for="editWishlistGender">Gender:</label>
+                <select id="editWishlistGender">
+                    <option value="">Keep current gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editWishlistAge">Age:</label>
+                <input type="number" id="editWishlistAge" min="1" max="120" 
+                       placeholder="Leave blank to keep current age">
+            </div>
+            <button onclick="saveWishlistChanges()" class="save-btn">Save Changes</button>
+            <button onclick="closeEditModal()" class="close-btn">&times;</button>
+        </div>
+    </div>
+
+    <script src="wishlist.js"></script>
+</body>
+</html> 
